@@ -14,14 +14,39 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 import { v4 as uuidV4 } from "uuid";
+import toast from "react-hot-toast";
+
+import { useNavigate } from "react-router-dom";
 
 const CreateRoom: React.FC = () => {
-  const [uniqueRoomId, setUniqueRoomId] = useState<string>("");
-  const [username, setUsername] = useState<string>("");
+  const navigate = useNavigate();
+
+  const [uniqueRoomId, setUniqueRoomId] = useState<string | undefined>(
+    undefined
+  );
+  const [username, setUsername] = useState<string | undefined>(undefined);
 
   const createNewRoom = async () => {
     const roomId = uuidV4();
     setUniqueRoomId(roomId);
+
+    toast.success("New room created");
+  };
+
+  const joinRoom = async (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    if (username === undefined && uniqueRoomId === undefined) {
+      toast.error("Room ID and Username is compulsory");
+      return;
+    }
+
+    navigate(`/editor/${uniqueRoomId}`, {
+      state: {
+        username,
+        uniqueRoomId,
+      },
+    });
   };
 
   return (
@@ -61,7 +86,7 @@ const CreateRoom: React.FC = () => {
               }}
             />
 
-            <Button onClick={(e) => e.preventDefault()} type="submit">
+            <Button onClick={joinRoom} type="submit">
               Join
             </Button>
           </form>
