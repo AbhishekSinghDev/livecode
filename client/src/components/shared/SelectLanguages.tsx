@@ -25,7 +25,9 @@ const SelectLanguages: React.FC<SelectLanguagesProps> = ({ languages }) => {
           <SelectLabel>Language</SelectLabel>
 
           {languages.map((lang: string) => (
-            <SelectItem value={lang}>{lang}</SelectItem>
+            <SelectItem value={lang} key={lang}>
+              {lang}
+            </SelectItem>
           ))}
         </SelectGroup>
       </SelectContent>

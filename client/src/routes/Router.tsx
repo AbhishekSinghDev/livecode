@@ -1,5 +1,5 @@
 import CreateRoom from "@/pages/CreateRoom";
-import Editor from "@/pages/Editor";
+import EditorPage from "@/pages/EditorPage";
 import Home from "@/pages/Home";
 import { Route, Routes } from "react-router-dom";
 
@@ -8,7 +8,7 @@ const Router = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/collaborate" element={<CreateRoom />} />
-      <Route path="/editor/:uniqueRoomId" element={<Editor />} />
+      <Route path="/editor/:uniqueRoomId" element={<EditorPage />} />
     </Routes>
   );
 };

@@ -10,7 +10,7 @@ const UserAvatar: React.FC<UserAvatarProps> = ({ username }) => {
     <div className="flex flex-col line-clamp-1 h-18 w-18 items-center justify-center gap-1">
       <Avatar>
         <AvatarImage src="" alt="User" />
-        <AvatarFallback>{username.slice(0, 2).toUpperCase()}</AvatarFallback>
+        <AvatarFallback>{username?.slice(0, 2).toUpperCase()}</AvatarFallback>
       </Avatar>
       <span className="font-medium text-xs">{username}</span>
     </div>
