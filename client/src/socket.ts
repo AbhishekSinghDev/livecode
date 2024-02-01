@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 
 const initializeSocketConnection = async () => {
-  const SERVER_URL = process.env.SOCKET_SERVER_URL || "http://localhost:3000";
+  const SERVER_URL = process.env.SOCKET_SERVER_URL || "";
   const options = {
     "force new connection": true,
     reconnectionAttempt: "Infinity",
