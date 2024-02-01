@@ -8,6 +8,10 @@ const app = express();
 
 const server = app.listen(PORT, () => console.log(`Server started on ${PORT}`));
 
+app.get("/", (req, res) => {
+  res.send("server running");
+});
+
 const clientUrl = process.env.DEPLOYED_CLIENT_URL || "http://localhost:5173";
 
 const io = new Server(server, {
