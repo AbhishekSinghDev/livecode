@@ -16,18 +16,20 @@ const Footer: React.FC = () => {
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400 flex gap-2 items-center md:justify-center font-semibold">
           <span>Made with</span>
           <img src={heart} alt="love" className="h-5 w-5" />
-          <span>By Abhishek Singh</span>
+          <span>By</span>
+          <a
+            href="https://abhishek-singh-dev.vercel.app/"
+            className="underline underline-offset-2"
+            target="_blank"
+          >
+            Abhishek Singh
+          </a>
         </span>
 
         <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
           <li>
             <a href="#" className="hover:underline me-4 md:me-6">
               Privacy Policy
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:underline">
-              Contact
             </a>
           </li>
         </ul>

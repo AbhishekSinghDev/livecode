@@ -28,9 +28,9 @@ const EditorPage: React.FC = () => {
   >([{ socketId: "", username: "" }]);
   const [code, setCode] = useState<string>("");
   const navigate = useNavigate();
-  const location = useLocation();
-  const roomid = location.state?.uniqueRoomId;
-  const joiningUser = location.state?.username;
+  const Location = useLocation();
+  const roomid = Location.state?.uniqueRoomId;
+  const joiningUser = Location.state?.username;
 
   useEffect(() => {
     const init = async () => {
@@ -70,9 +70,15 @@ const EditorPage: React.FC = () => {
   }, []);
 
   const copyRoomId = () => {
-    const roomid = location.state.uniqueRoomId;
+    const roomid = Location.state.uniqueRoomId;
     navigator.clipboard.writeText(roomid);
     toast.success("Room id copied");
+  };
+
+  const leaveRoom = () => {
+    socketConnection?.off(ACTIONS.CODE_CHANGE);
+    navigate("/");
+    location.reload();
   };
 
   const errorHandler = (e: Error | unknown) => {
@@ -128,7 +134,9 @@ const EditorPage: React.FC = () => {
 
           <div className="flex flex-col gap-2">
             <Button onClick={copyRoomId}>Copy Room ID</Button>
-            <Button variant="destructive">Leave Room</Button>
+            <Button variant="destructive" onClick={leaveRoom}>
+              Leave Room
+            </Button>
           </div>
         </div>
 

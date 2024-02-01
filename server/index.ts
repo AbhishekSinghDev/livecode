@@ -8,10 +8,12 @@ const app = express();
 
 const server = app.listen(PORT, () => console.log(`Server started on ${PORT}`));
 
+const clientUrl = process.env.DEPLOYED_CLIENT_URL || "http://localhost:5173";
+
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:5173",
+    origin: clientUrl,
   },
 });
 
