@@ -45,7 +45,7 @@ const EditorPage: React.FC = () => {
         username: joiningUser,
       });
 
-      socket.on(ACTIONS.JOINED, ({ clients, username, socketId }) => {
+      socket.on(ACTIONS.JOINED, ({ clients, username }) => {
         if (joiningUser !== username) {
           toast.success(`${username} joined the room`);
         }
